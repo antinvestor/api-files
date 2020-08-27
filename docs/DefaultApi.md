@@ -16,6 +16,7 @@ Method | HTTP request | Description
 > File AddFile(ctx, optional)
 
 
+
 Stores a new file. Duplicates are going to be ignored if the hash of the file and meta data both match an existing file
 
 ### Required Parameters
@@ -33,11 +34,7 @@ Optional parameters are passed through a pointer to a AddFileOpts struct
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **groupId** | **optional.String**|  | 
- **subscriptionId** | **optional.String**|  | 
- **public** | **optional.Bool**|  | 
- **name** | **optional.String**|  | 
- **fileObject** | **optional.Interface of *os.File****optional.*os.File**|  | 
+ **inlineObject** | [**optional.Interface of InlineObject**](InlineObject.md)|  | 
 
 ### Return type
 
@@ -60,6 +57,7 @@ No authorization required
 ## DeleteFile
 
 > DeleteFile(ctx, id)
+
 
 
 deletes a single file based on the ID supplied
@@ -92,7 +90,8 @@ No authorization required
 
 ## FindFileById
 
-> File FindFileById(ctx, id)
+> *os.File FindFileById(ctx, id)
+
 
 
 Returns a file based on supplied ID
@@ -107,7 +106,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**File**](File.md)
+[***os.File**](*os.File.md)
 
 ### Authorization
 
@@ -126,6 +125,7 @@ No authorization required
 ## FindFiles
 
 > []File FindFiles(ctx, optional)
+
 
 
 Returns all files from the system that the user has access to 

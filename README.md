@@ -44,12 +44,12 @@ Class | Method | HTTP request | Description
  - [Error](docs/Error.md)
  - [File](docs/File.md)
  - [InlineObject](docs/InlineObject.md)
- - [UnauthorizedError](docs/UnauthorizedError.md)
 
 
 ## Documentation For Authorization
 
  Endpoints do not require authorization.
+
 
 
 ## Author

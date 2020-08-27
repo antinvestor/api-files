@@ -12,7 +12,7 @@ package openapi
 import (
 	"os"
 )
-
+// InlineObject struct for InlineObject
 type InlineObject struct {
 	GroupId string `json:"group_id,omitempty"`
 	SubscriptionId string `json:"subscription_id,omitempty"`

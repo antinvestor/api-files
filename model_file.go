@@ -9,7 +9,7 @@
  */
 
 package openapi
-
+// File struct for File
 type File struct {
 	Id string `json:"id,omitempty"`
 	GroupId string `json:"group_id,omitempty"`

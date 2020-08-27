@@ -49,7 +49,7 @@ paths:
           type: integer
         style: form
       responses:
-        200:
+        "200":
           content:
             application/json:
               schema:
@@ -57,7 +57,7 @@ paths:
                   $ref: '#/components/schemas/File'
                 type: array
           description: files response
-        401:
+        "401":
           $ref: '#/components/responses/UnauthorizedError'
         default:
           content:
@@ -73,31 +73,14 @@ paths:
       operationId: addFile
       requestBody:
         $ref: '#/components/requestBodies/inline_object'
-        content:
-          multipart/form-data:
-            schema:
-              properties:
-                group_id:
-                  type: string
-                subscription_id:
-                  type: string
-                public:
-                  type: boolean
-                name:
-                  type: string
-                fileObject:
-                  format: binary
-                  type: string
-              type: object
-        description: File contents to add to the store
       responses:
-        200:
+        "200":
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/File'
           description: file response
-        401:
+        "401":
           $ref: '#/components/responses/UnauthorizedError'
         default:
           content:
@@ -121,9 +104,9 @@ paths:
           type: string
         style: simple
       responses:
-        204:
+        "204":
           description: file deleted
-        401:
+        "401":
           $ref: '#/components/responses/UnauthorizedError'
         default:
           content:
@@ -146,13 +129,14 @@ paths:
           type: string
         style: simple
       responses:
-        200:
+        "200":
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/File'
+                format: binary
+                type: string
           description: file response
-        401:
+        "401":
           $ref: '#/components/responses/UnauthorizedError'
         default:
           content:
