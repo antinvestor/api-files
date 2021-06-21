@@ -13,7 +13,7 @@ info:
   title: Ant Investor Files
   version: 1.0.0
 servers:
-- url: http://api.antinvestor.com/files
+- url: https://files.api.antinvestor.com
 security:
 - bearerAuth: []
 paths:
@@ -29,6 +29,8 @@ paths:
         name: subscription_id
         required: false
         schema:
+          example: 9bsv0s09a5j002njlpvg
+          pattern: '[0-9a-z_-]{3,20}'
           type: string
         style: form
       - description: filters the files by the grouping id
@@ -37,6 +39,8 @@ paths:
         name: group_id
         required: false
         schema:
+          example: 9bsv0s09a5j002njlptg
+          pattern: '[0-9a-z_-]{3,20}'
           type: string
         style: form
       - description: maximum number of results to return
@@ -45,7 +49,14 @@ paths:
         name: limit
         required: false
         schema:
-          format: int32
+          type: integer
+        style: form
+      - description: maximum number of results to return
+        explode: true
+        in: query
+        name: page
+        required: false
+        schema:
           type: integer
         style: form
       responses:
@@ -73,6 +84,29 @@ paths:
       operationId: addFile
       requestBody:
         $ref: '#/components/requestBodies/inline_object'
+        content:
+          multipart/form-data:
+            schema:
+              properties:
+                group_id:
+                  example: 9bsv0s09a5j002njlpvg
+                  pattern: '[0-9a-z_-]{3,20}'
+                  type: string
+                access_id:
+                  example: 9bsv0s09a5j002njlptg
+                  pattern: '[0-9a-z_-]{3,20}'
+                  type: string
+                public:
+                  default: false
+                  type: boolean
+                name:
+                  example: uploadfile.txt
+                  type: string
+                fileObject:
+                  format: binary
+                  type: string
+              type: object
+        description: File contents to add to the store
       responses:
         "200":
           content:
@@ -101,6 +135,8 @@ paths:
         name: id
         required: true
         schema:
+          example: 9bsv0s09a5j002njlq20
+          pattern: '[0-9a-z_-]{3,20}'
           type: string
         style: simple
       responses:
@@ -126,12 +162,14 @@ paths:
         name: id
         required: true
         schema:
+          example: 9bsv0s09a5j002njlq30
+          pattern: '[0-9a-z_-]{3,20}'
           type: string
         style: simple
       responses:
         "200":
           content:
-            application/json:
+            application/octet-stream:
               schema:
                 format: binary
                 type: string
@@ -156,10 +194,10 @@ components:
   schemas:
     File:
       example:
-        subscription_id: subscription_id
         public: true
         group_id: group_id
         name: name
+        access_id: access_id
         id: id
         url: url
       properties:
@@ -167,7 +205,7 @@ components:
           type: string
         group_id:
           type: string
-        subscription_id:
+        access_id:
           type: string
         public:
           type: boolean
@@ -192,14 +230,25 @@ components:
     inline_object:
       properties:
         group_id:
+          example: 9bsv0s09a5j002njlpvg
+          pattern: '[0-9a-z_-]{3,20}'
           type: string
-        subscription_id:
+        access_id:
+          example: 9bsv0s09a5j002njlptg
+          pattern: '[0-9a-z_-]{3,20}'
           type: string
         public:
+          default: false
           type: boolean
         name:
+          example: uploadfile.txt
           type: string
         fileObject:
           format: binary
           type: string
       type: object
+  securitySchemes:
+    bearerAuth:
+      bearerFormat: JWT
+      scheme: bearer
+      type: http
