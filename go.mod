@@ -1,4 +1,4 @@
-module github.com/antinvestor/service-file-api
+module github.com/antinvestor/service-files-api
 
 go 1.16
 
