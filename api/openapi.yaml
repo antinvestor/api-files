@@ -76,8 +76,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: unexpected error
-      security:
-      - bearerAuth?: []
     post:
       description: Stores a new file. Duplicates are going to be ignored if the hash
         of the file and meta data both match an existing file
@@ -122,8 +120,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: unexpected error
-      security:
-      - bearerAuth: []
   /{id}:
     delete:
       description: deletes a single file based on the ID supplied
@@ -150,8 +146,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: unexpected error
-      security:
-      - bearerAuth: []
     get:
       description: Returns a file based on supplied ID
       operationId: find file by id
@@ -182,8 +176,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
           description: unexpected error
-      security:
-      - bearerAuth?: []
 components:
   requestBodies:
     inline_object:

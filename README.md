@@ -89,6 +89,7 @@ Class | Method | HTTP request | Description
 
  - [Error](docs/Error.md)
  - [File](docs/File.md)
+ - [InlineObject](docs/InlineObject.md)
 
 
 ## Documentation For Authorization
